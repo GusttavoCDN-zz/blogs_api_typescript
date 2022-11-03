@@ -12,7 +12,7 @@
   },
   "scripts": {
     "prepare": "husky install",
-    "test": "jest --passWithNoTests --silent --runInBand",
+    "test": "jest --passWithNoTests --silent --runInBand --watchAll",
     "test:staged": "jest --passWithNoTests --bail --runInBand --findRelatedTests",
     "commit": "git add . && yarn cz"
   },
