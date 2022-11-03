@@ -1,4 +1,4 @@
-import { User } from '../entities/User';
+import { User } from '../entities/user';
 
 type input = Omit<User, 'id' | 'role'>;
 

@@ -1,5 +1,5 @@
 import { UsersRepository } from '../contracts/users-repository';
-import { CreateUserUseCase } from './CreateUser';
+import { CreateUserUseCase } from './create-user';
 
 describe('Create user useCase Tests', () => {
   it('Should throw a exception with User already exists', async () => {
