@@ -8,4 +8,10 @@ Todos os **POSTS** do BLOG devem ser dividos em **CATEGORIAS**
 
 ## Regras de Negócio
 
-- O **USUARIO** deve ser capaz de se cadastrar na API enviando: `name`, `email` e `password`
+### Cadastro de usuarios
+
+> -> O **USUARIO** deve ser capaz de se cadastrar na API enviando: `name`, `email` e `password`
+
+> -> Não deve ser possível cadastrar mais de um **USUARIO** com o mesmo `email`.
+
+> -> Não deve ser possível cadastrar **USUARIO** sem `email` ou `password` válido.
