@@ -16,6 +16,12 @@ export class CreateUserUseCase implements CreateUser {
       throw new Error('User already exists');
     }
 
-    return null as unknown as CreatedUserDTO;
+    const user = await this.usersRepository.create({
+      name,
+      email,
+      password
+    });
+
+    return user;
   };
 }
