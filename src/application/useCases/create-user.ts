@@ -1,8 +1,7 @@
-import { CreateUser } from '../../domain/useCases/create-user';
 import { UsersRepository } from '../contracts/users-repository';
 import { CreatedUserDTO, CreateUserDTO } from "../DTO's/user-dtos";
 
-export class CreateUserUseCase implements CreateUser {
+export class CreateUserUseCase {
   constructor(private readonly usersRepository: UsersRepository) {}
 
   public create = async ({
