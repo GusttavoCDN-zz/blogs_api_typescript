@@ -1,3 +1,4 @@
+import { CreateUserUseCase } from '../../application/useCases/create-user';
 import { HttpResponse } from '../contracts';
 import { SignUpValidator } from '../contracts/SignUpValidator';
 import { SignUp } from './SignUp';
@@ -5,16 +6,31 @@ import { SignUp } from './SignUp';
 interface SutTypes {
   sut: SignUp
   requestValidatorStub: jest.Mocked<SignUpValidator>
+  createUserStub: jest.Mocked<CreateUserUseCase>
 }
+
+const validResponseMock = {
+  statusCode: 201,
+  body: {
+    id: 1,
+    name: 'any_name',
+    email: 'any_email',
+    password: 'any_password'
+  }
+};
 
 const makeSut = (): SutTypes => {
   const requestValidatorStub: jest.Mocked<SignUpValidator> = {
     validate: jest.fn().mockResolvedValue(true)
   };
 
-  const sut = new SignUp(requestValidatorStub);
+  const createUserStub: jest.Mocked<CreateUserUseCase> = {
+    execute: jest.fn().mockResolvedValue(validResponseMock.body)
+  } as any;
 
-  return { sut, requestValidatorStub };
+  const sut = new SignUp(requestValidatorStub, createUserStub);
+
+  return { sut, requestValidatorStub, createUserStub };
 };
 
 describe('SignUp controller test', () => {
@@ -29,5 +45,16 @@ describe('SignUp controller test', () => {
 
     expect(httpResponse.statusCode).toBe(400);
     expect(httpResponse.body).toBeInstanceOf(Error);
+  });
+
+  it('Should return status 201 if receive valid data', async () => {
+    const { sut } = makeSut();
+
+    const httpResponse: HttpResponse = await sut.handle({
+      body: { name: 'any_name', email: 'any_email', password: '123456' }
+    });
+
+    expect(httpResponse.statusCode).toBe(201);
+    expect(httpResponse).toEqual(validResponseMock);
   });
 });
