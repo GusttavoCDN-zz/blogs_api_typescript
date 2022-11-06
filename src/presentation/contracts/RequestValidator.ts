@@ -1,3 +1,3 @@
-export interface SignUpValidator {
+export interface RequestValidator {
   validate: (data: unknown) => Promise<boolean>
 }

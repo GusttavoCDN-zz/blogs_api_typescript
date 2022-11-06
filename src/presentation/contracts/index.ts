@@ -1,3 +1,3 @@
 export * from './Controller';
 export * from './Http';
-export * from './SignUpValidator';
+export * from './RequestValidator';

@@ -1,11 +1,11 @@
 import { CreatedUserDTO, CreateUserDTO } from "../../application/DTO's/user-dtos";
 import { CreateUserUseCase } from '../../application/useCases/create-user';
 import { Controller, HttpResponse, HttpResquest } from '../contracts';
-import { SignUpValidator } from '../contracts/SignUpValidator';
+import { RequestValidator } from '../contracts/RequestValidator';
 
 export class SignUp implements Controller {
   constructor(
-    private readonly requestValidator: SignUpValidator,
+    private readonly requestValidator: RequestValidator,
     private readonly createUser: CreateUserUseCase
   ) {}
 
