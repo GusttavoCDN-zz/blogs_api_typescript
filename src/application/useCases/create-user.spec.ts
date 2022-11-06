@@ -36,7 +36,7 @@ describe('Create user useCase Tests', () => {
 
     usersRepository.findByEmail.mockResolvedValueOnce(createdUserResponse);
 
-    const promise = sut.create(createUserRequest);
+    const promise = sut.execute(createUserRequest);
 
     await expect(promise).rejects.toThrow(Error);
   });
@@ -46,7 +46,7 @@ describe('Create user useCase Tests', () => {
 
     const findByEmailSpy = jest.spyOn(usersRepository, 'findByEmail');
 
-    await sut.create(createUserRequest);
+    await sut.execute(createUserRequest);
 
     expect(findByEmailSpy).toHaveBeenCalledWith(createUserRequest.email);
   });
@@ -54,7 +54,7 @@ describe('Create user useCase Tests', () => {
   it('Should return a user on success', async () => {
     const { sut } = makeSut();
 
-    const user = await sut.create(createUserRequest);
+    const user = await sut.execute(createUserRequest);
 
     expect(user).toEqual(createdUserResponse);
   });
@@ -64,7 +64,7 @@ describe('Create user useCase Tests', () => {
 
     const createSpy = jest.spyOn(usersRepository, 'create');
 
-    await sut.create(createUserRequest);
+    await sut.execute(createUserRequest);
 
     expect(createSpy).toHaveBeenCalledWith(createUserRequest);
   });

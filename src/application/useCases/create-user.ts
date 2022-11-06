@@ -4,7 +4,7 @@ import { CreatedUserDTO, CreateUserDTO } from "../DTO's/user-dtos";
 export class CreateUserUseCase {
   constructor(private readonly usersRepository: UsersRepository) {}
 
-  public create = async ({
+  public execute = async ({
     name,
     email,
     password
