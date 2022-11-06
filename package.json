@@ -42,6 +42,11 @@
     }
   },
   "dependencies": {
-    "joi": "^17.7.0"
+    "@prisma/client": "^4.5.0",
+    "joi": "^17.7.0",
+    "prisma": "^4.5.0"
+  },
+  "prisma": {
+    "schema": "./src/infra/prisma/schema.prisma"
   }
 }
