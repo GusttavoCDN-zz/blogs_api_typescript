@@ -1,3 +1,4 @@
+import { Conflict } from '../../presentation/errors';
 import { UsersRepository } from '../contracts/UsersRepository';
 import { CreatedUserDTO, CreateUserDTO } from "../DTO's/user-dtos";
 
@@ -12,7 +13,7 @@ export class CreateUserUseCase {
     const userAlreadyExists = await this.usersRepository.findByEmail(email);
 
     if (userAlreadyExists) {
-      throw new Error('User already exists');
+      throw new Conflict('User already exists');
     }
 
     const user = await this.usersRepository.create({
