@@ -1,16 +1,16 @@
 import { CreatedUserDTO, CreateUserDTO } from "../../application/DTO's/user-dtos";
 import { CreateUserUseCase } from '../../application/useCases/create-user';
-import { Controller, HttpResponse, HttpResquest } from '../contracts';
+import { Controller, HttpResponse, HttpRequest } from '../contracts';
 import { RequestValidator } from '../contracts/RequestValidator';
 
-export class SignUp implements Controller {
+export class SignUpController implements Controller {
   constructor(
     private readonly requestValidator: RequestValidator,
     private readonly createUser: CreateUserUseCase
   ) {}
 
   public handle = async (
-    request: HttpResquest<CreateUserDTO>
+    request: HttpRequest<CreateUserDTO>
   ): Promise<HttpResponse<CreatedUserDTO>> => {
     const isRequestValid = await this.requestValidator.validate(request.body);
 

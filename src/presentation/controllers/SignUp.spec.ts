@@ -1,10 +1,10 @@
 import { CreateUserUseCase } from '../../application/useCases/create-user';
 import { HttpResponse } from '../contracts';
 import { RequestValidator } from '../contracts/RequestValidator';
-import { SignUp } from './SignUp';
+import { SignUpController } from './SignUp';
 
 interface SutTypes {
-  sut: SignUp
+  sut: SignUpController
   requestValidatorStub: jest.Mocked<RequestValidator>
   createUserStub: jest.Mocked<CreateUserUseCase>
 }
@@ -28,7 +28,7 @@ const makeSut = (): SutTypes => {
     execute: jest.fn().mockResolvedValue(validResponseMock.body)
   } as any;
 
-  const sut = new SignUp(requestValidatorStub, createUserStub);
+  const sut = new SignUpController(requestValidatorStub, createUserStub);
 
   return { sut, requestValidatorStub, createUserStub };
 };

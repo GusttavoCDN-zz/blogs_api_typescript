@@ -3,6 +3,6 @@ export interface HttpResponse<T = any | Error> {
   body: T | Error
 }
 
-export interface HttpResquest<T = any> {
+export interface HttpRequest<T = any> {
   body: T
 }
