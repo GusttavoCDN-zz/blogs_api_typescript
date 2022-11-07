@@ -1,4 +1,4 @@
-import { UsersRepository } from '../../../application/contracts/Users-repository';
+import { UsersRepository } from '../../../application/contracts/UsersRepository';
 import { CreatedUserDTO, CreateUserDTO } from "../../../application/DTO's/user-dtos";
 import { user } from '../models/user-model';
 

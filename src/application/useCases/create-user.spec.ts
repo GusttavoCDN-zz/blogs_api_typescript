@@ -1,4 +1,4 @@
-import { UsersRepository } from '../contracts/Users-repository';
+import { UsersRepository } from '../contracts/UsersRepository';
 import { CreateUserUseCase } from './create-user';
 
 const createdUserResponse = {
