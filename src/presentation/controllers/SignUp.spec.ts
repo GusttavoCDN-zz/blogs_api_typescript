@@ -44,7 +44,7 @@ describe('SignUp controller test', () => {
     });
 
     expect(httpResponse.statusCode).toBe(400);
-    expect(httpResponse.body).toBeInstanceOf(Error);
+    expect(httpResponse.body.error).toBeDefined();
   });
 
   it('Should return status 201 if receive valid data', async () => {
